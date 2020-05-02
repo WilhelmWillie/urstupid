@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Footer, MessageHero, MessageBody, CallToAction } from "../components";
 
-function Message() {
+function Message({ targetName, fromName, message }) {
   return (
     <>
       <Head>
@@ -26,13 +26,21 @@ function Message() {
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
       </Head>
 
-      <MessageHero targetName="willie" friendName="alex" />
-      <MessageBody message="you just suck in general tbh" />
-      <CallToAction friendName="alex">
+      <MessageHero targetName={targetName} fromName={fromName} />
+      <MessageBody message={message} />
+      <CallToAction fromName={fromName}>
         <Footer isDark/>
       </CallToAction>
     </>
   )
+}
+
+Message.getInitialProps =  () => {
+  return {
+    targetName: "willie",
+    fromNamme: "alex",
+    message:  "because you just suck"
+  };
 }
 
 export default Message

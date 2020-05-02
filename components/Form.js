@@ -6,7 +6,7 @@ import Container from  "../styles/container";
 import Modal from "./Modal";
 
 const Form = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [link, setLink] = useState(null);
   const [error, setError] = useState(null);
 
@@ -36,6 +36,7 @@ const Form = () => {
     }
 
     setShowModal(true);
+    setLink("https://urstup.id/XYZBCA");
   }
 
   const closeModal = () => {
@@ -57,6 +58,8 @@ const Form = () => {
       <Container>
         <FormCard>
           <form onSubmit={handleSubmit}>
+            {error && <Error>{error}</Error>}
+
             <h2>who is stupid</h2>
             <span>64 characters max</span>
             <input name="targetName" type="text" placeholder="ur friend's name" maxLength="64" required />
@@ -85,7 +88,7 @@ const Form = () => {
           <p>share this link to ur friends to send them a message</p>
 
           <CopyLink>
-            <input type="text" value="https://urstup.id/XYZABC" onClick={(e) => e.currentTarget.select()} ref={linkInput} />
+            <input type="text" value={link} onClick={(e) => e.currentTarget.select()} ref={linkInput} />
             <button onClick={copyLink}>copy</button>
           </CopyLink>
         </LinkShareModalBody>
@@ -116,6 +119,17 @@ const FormCard = styled.div`
     margin-top: 24px;
     margin-left: auto;
   }
+`;
+
+const Error = styled.p`
+  text-align: center;
+  margin-top: 12px;
+  font-weight: 600;
+  color: ${({theme}) => theme.colors.white};
+  background: ${({theme}) => theme.colors.accent};
+  border-radius: 6px;
+  margin-bottom: 24px;
+  padding: 12px;
 `;
 
 // lmao sometimes you just gotta do it 🤷🏻‍♂️

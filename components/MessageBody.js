@@ -3,7 +3,7 @@ import Container from "../styles/container";
 
 const MessageBody = ({ message }) => {
   return (
-    <Background>
+    <Background id="message-body">
       <Container>
         <BodyContainer>
           <h2>ur stupid!</h2>

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import Container from "../styles/container";
 
-const CallToAction = ({ children, friendName }) => {
+const CallToAction = ({ children, fromName }) => {
   return (
     <Background>
       <Container>
-        <p>want to get back at {friendName}? send them a urstup.id message</p>
+        <p>want to get back at {fromName}? send them a urstup.id message</p>
 
         <a href="/" className="button">get back at em</a>
       </Container>

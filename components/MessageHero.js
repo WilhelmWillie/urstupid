@@ -1,15 +1,24 @@
 import styled from 'styled-components';
 import Container from "../styles/container";
 
-const MessageHero = ({ targetName, friendName }) => {
+const MessageHero = ({ targetName, fromName }) => {
+  const scrollToBody = () => {
+    const message = document.querySelector("#message-body");
+    window.scrollTo({
+      top: message.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <Background>
       <Container>
         <h1>hey {targetName}!</h1>
 
-        <p>ur friend {friendName} wants to tell u something</p>
+        <p>ur friend {fromName} wants to tell u something</p>
 
-        <button>see message</button>
+        <button onClick={scrollToBody}>see message</button>
       </Container>
     </Background>
   )

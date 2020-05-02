@@ -44,6 +44,7 @@ const Background = styled.div`
   bottom: 0;
   left: 0;
   background: rgba(0,0,0,0.8);
+  transition: 0.1s all;
 `;
 
 const ModalBody = styled.div`
