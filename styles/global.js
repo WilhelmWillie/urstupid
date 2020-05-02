@@ -5,7 +5,7 @@ const GlobalStyle  = createGlobalStyle`
   ${reset}
 
   body {
-    font-family: sans-serif;
+    font-family: 'Nunito', sans-serif;
     color: ${({theme}) =>  theme.colors.body};
     font-size: 18px;
   }
@@ -30,6 +30,7 @@ const GlobalStyle  = createGlobalStyle`
   }
 
   input[type=text],textarea {
+    font-family: 'Nunito', sans-serif;
     border: 1px solid #979797;
     border-radius: 4px;
     padding: 16px;

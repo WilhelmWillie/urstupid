@@ -1,25 +1,56 @@
+import { useState } from "react";
+
 import styled from 'styled-components';
 
 import Container from  "../styles/container";
 
-const Form = () => {
+const Form = ({ activateModal }) => {
+  const [link, setLink] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const targetName = e.currentTarget.targetName.value;
+    const fromName = e.currentTarget.fromName.value;
+    const message = e.currentTarget.message.value;
+
+    // Validate
+    if (!targetName || targetName.length === 0) {
+      setError("please fill out the 'who is stupid' field");
+      return;
+    }
+
+    if (!fromName || fromName.length === 0) {
+      setError("please fill out the 'whats ur name' field");
+      return;
+    }
+
+    if (!message || message.length === 0) {
+      setError("please fill out the 'message' field");
+      return;
+    }
+  }
+
   return (
     <Container>
       <FormCard>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h2>who is stupid</h2>
-
           <span>64 characters max</span>
+          <input name="targetName" type="text" placeholder="ur friend's name" maxLength="64" required />
 
-          <input type="text" placeholder="ur friend's name" maxLength="64" />
+          <Space />
+
+          <h2>whats ur name</h2>
+          <span>64 characters max</span>
+          <input name="fromName" type="text" placeholder="ur name" maxLength="64" required />
 
           <Space />
 
           <h2>why are they stupid</h2>
-
           <span>280 characters max</span>
-
-          <textarea rows={3} placeholder="because they just are" maxLength="280" />
+          <textarea name="message" rows={3} placeholder="because they just are" maxLength="280" required />
 
           <button type="submit">let them know</button>
         </form>

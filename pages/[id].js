@@ -22,6 +22,8 @@ function Message() {
         />
         
         <link rel="icon" type="image/png" href="/favicon.png" />
+
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
       </Head>
 
       <MessageHero targetName="willie" friendName="alex" />
