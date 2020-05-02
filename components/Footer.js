@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 import Container from  "../styles/container";
 
-const Footer = () => {
+const Footer = ({ isDark }) => {
   return (
-    <FooterContainer>
+    <FooterContainer isDark={isDark}>
       <p>
         made for fun. pls use lightly and responsibly.
       </p>
@@ -26,6 +26,10 @@ const FooterContainer = styled(Container)`
     margin: 32px auto;
     text-align: center;
   }
+
+  ${({isDark, theme}) => isDark && `
+    color: ${theme.colors.white};
+  `}
 `;
 
 export default Footer;

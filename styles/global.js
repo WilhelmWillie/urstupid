@@ -35,9 +35,10 @@ const GlobalStyle  = createGlobalStyle`
     padding: 16px;
     font-size: 18px;
     box-sizing: border-box;
+    color: ${({theme}) => theme.colors.body};
   }
 
-  button {
+  button, a.button {
     background: ${({theme}) => theme.colors.action};
     border-radius: 4px;
     color: ${({theme}) => theme.colors.white};
@@ -45,6 +46,11 @@ const GlobalStyle  = createGlobalStyle`
     font-size: 18px;
     border: none;
     cursor: pointer;
+    transition: 0.2s all;
+
+    &:hover {
+      transform: scale(0.975);
+    }
   }
 `;
 

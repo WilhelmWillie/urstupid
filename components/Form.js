@@ -9,13 +9,17 @@ const Form = () => {
         <form>
           <h2>who is stupid</h2>
 
-          <input type="text" placeholder="ur friend's name" />
+          <span>64 characters max</span>
+
+          <input type="text" placeholder="ur friend's name" maxLength="64" />
 
           <Space />
 
           <h2>why are they stupid</h2>
 
-          <textarea rows={3} placeholder="because they just are" />
+          <span>280 characters max</span>
+
+          <textarea rows={3} placeholder="because they just are" maxLength="280" />
 
           <button type="submit">let them know</button>
         </form>
@@ -31,6 +35,10 @@ const FormCard = styled.div`
   box-shadow: 1px 2px 6px 0 rgba(0,0,0,0.29);
   border-radius: 6px;
   margin-top: -32px;
+
+  span {
+    font-size: 12px;
+  }
 
   input[type=text], textarea {
     width: 100%;
