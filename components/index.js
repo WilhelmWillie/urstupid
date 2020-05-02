@@ -5,3 +5,5 @@ export { default as Hero } from "./Hero";
 export { default as MessageHero } from "./MessageHero";
 export { default as MessageBody } from "./MessageBody";
 export { default as CallToAction } from "./CallToAction";
+
+export { default as Modal } from "./Modal";
