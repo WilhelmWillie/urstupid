@@ -1,0 +1,8 @@
+[dev]
+  command = "yarn start" # Command to start your dev server
+  port = 5000 # Port that the dev server will be accessible on
+  targetPort = 3000 # Port of target app server
+  publish = "out"
+
+[build]
+  functions = "functions/"

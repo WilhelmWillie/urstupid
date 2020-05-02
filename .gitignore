@@ -114,3 +114,7 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 .pnp.*
+# Local Netlify folder
+.netlify
+
+.DS_Store
