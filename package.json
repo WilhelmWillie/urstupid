@@ -1,0 +1,22 @@
+{
+  "name": "urstupid",
+  "version": "1.0.0",
+  "description": "a revolutionary platform powered by blockchain, AI, ar/vr, sustainable tech, vc funds... ok jk this is literally a stupid web app",
+  "main": "index.js",
+  "repository": "https://github.com/WilhelmWillie/urstupid.git",
+  "author": "Wilhelm Willie <wilhelmwillie@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^9.3.6",
+    "next-images": "^1.4.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.0",
+    "styled-reset": "^4.1.4"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  }
+}
