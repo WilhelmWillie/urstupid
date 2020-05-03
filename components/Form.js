@@ -12,7 +12,7 @@ const Form = () => {
 
   const linkInput = useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const targetName = e.currentTarget.targetName.value;
@@ -34,9 +34,26 @@ const Form = () => {
       setError("please fill out the 'message' field");
       return;
     }
+    
+    const res = await fetch("/.netlify/functions/message", {
+      method: "POST",
+      body: JSON.stringify({
+        targetName, fromName, message
+      })
+    })
 
-    setShowModal(true);
-    setLink("https://urstup.id/XYZBCA");
+    const data  = await res.json();
+
+    if (res.status === 200) {
+      const location = window.location;
+      const messageData = data.message;
+      const url = `${location.protocol}//${location.host}/${messageData.urlSlug}`
+
+      setLink(url);
+      setShowModal(true);
+    } else {
+      setError(data.error);
+    }
   }
 
   const closeModal = () => {

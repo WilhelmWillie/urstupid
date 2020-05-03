@@ -1,37 +1,78 @@
-exports.handler = async (event, context) => {
-  try {
-    console.log(event.httpMethod);
+const mongoose = require("mongoose");
+const Message = require("../models/Message");
 
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/urstupid';
+
+function connectToDb() {
+  mongoose.connect(MONGODB_URI);
+}
+
+connectToDb();
+
+function generateSlug() {
+  return (Math.random()*1000).toString(36).slice(3,8).toUpperCase()
+}
+
+exports.handler = async (event, context, cb) => {
+  context.callbackWaitsForEmptyEventLoop = false;
+
+  try {
     const method = event.httpMethod;
 
     if (method === "GET") {
-      console.log(JSON.stringify(event.queryStringParameters));
-      const id = event.queryStringParameters.id;
+      const slug = event.queryStringParameters.slug;
 
-      if  (!id)  {
-        const response = {
-          error: "could not find a message with that ID"
-        }
-
-        return {
-          statusCode: 404,
-          body: JSON.stringify(response)
-        }
+      if (!slug)  {
+        cb(null, {
+          statusCode: 400,
+          body: JSON.stringify({ error: "no slug was provided" })
+        });
       } else {
-        return {
-          statusCode: 404,
-          body: JSON.stringify({ id })
+        const message = await Message.findOne({ urlSlug: slug });
+
+        if (!message) {
+          cb(null, {
+            statusCode: 404,
+            body: JSON.stringify({ error: "could not find a message with that slug" })
+          });
+        } else {
+          cb(null, {
+            statusCode: 200,
+            body: JSON.stringify({ message })
+          });
         }
       }
     } else if (method === "POST") {
-      const data = JSON.parse(event.body);
+      const { message, fromName, targetName } = JSON.parse(event.body);
 
-      return  {
-        statusCode: 200,
-        body: JSON.stringify({ data })
+      let generatedSlug = generateSlug();
+      let existingMessage = await Message.findOne({urlSlug: generatedSlug});
+
+      while(!!existingMessage) {
+        generatedSlug = generateSlug();
+        existingMessage = await Message.findOne({urlSlug: generatedSlug});
       }
+
+      const newMessage = new Message({
+        urlSlug: generatedSlug,
+        message,
+        fromName,
+        targetName
+      });
+
+      await newMessage.save();
+
+      cb(null, {
+        statusCode: 200,
+        body: JSON.stringify({ message: newMessage })
+      });
     }
   } catch (err) {
-    return { statusCode: 500, body: err.toString() }
+    cb(null, { 
+      statusCode: 500, 
+      body: JSON.stringify({
+        error: err.toString() 
+      })
+    });
   }
 }
