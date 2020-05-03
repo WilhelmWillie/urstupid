@@ -22,6 +22,18 @@ function HomePage() {
           content="a revolutionary platform powered by blockchain, AI, ar/vr, sustainable tech, vc funds... ok jk this is just a friendly way to remind ur friends what they are"
         />
         
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125571056-5"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-125571056-5');
+          `
+          }}
+        />
+
         <link rel="icon" type="image/png" href="/favicon.png" />
 
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />

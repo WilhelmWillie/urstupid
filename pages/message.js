@@ -35,20 +35,32 @@ function Message() {
   return (
     <>
       <Head>
-        <title>urstup.id - a friendly way to remind ur friends what they are</title>
+        <title>ur friend has a message for u!</title>
 
         <meta 
           name="description"
-          content="a revolutionary platform powered by blockchain, AI, ar/vr, sustainable tech, vc funds... ok jk this is just a friendly way to remind ur friends what they are"
+          content="ur friend wants to send u a friendly message!"
         />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <meta property="og:url" content="https://urstup.id" />
-        <meta property="og:title" content="urstup.id - a friendly way to remind ur friends what they are" />
+        <meta property="og:title" content="ur friend has a message for u!" />
         <meta
           property="og:description"
-          content="a revolutionary platform powered by blockchain, AI, ar/vr, sustainable tech, vc funds... ok jk this is just a friendly way to remind ur friends what they are"
+          content="ur friend wants to send u a friendly message!"
+        />
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125571056-5"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-125571056-5');
+          `
+          }}
         />
         
         <link rel="icon" type="image/png" href="/favicon.png" />
