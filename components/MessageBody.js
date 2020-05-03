@@ -7,9 +7,7 @@ const MessageBody = ({ message }) => {
       <Container>
         <BodyContainer>
           <h2>ur stupid!</h2>
-
-          <h3>why are u stupid? because…</h3>
-
+          
           <p>{message}</p>
         </BodyContainer>
       </Container>

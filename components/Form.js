@@ -38,7 +38,9 @@ const Form = () => {
     const res = await fetch("/.netlify/functions/message", {
       method: "POST",
       body: JSON.stringify({
-        targetName, fromName, message
+        targetName: targetName.trim(), 
+        fromName: fromName.trim(), 
+        message: message.trim()
       })
     })
 
@@ -89,9 +91,9 @@ const Form = () => {
 
             <Space />
 
-            <h2>they are stupid because...</h2>
+            <h2>attach a message</h2>
             <span>280 characters max</span>
-            <textarea name="message" rows={3} placeholder="they just are" maxLength="280" required />
+            <textarea name="message" rows={3} placeholder="u r dumb" maxLength="280" required />
 
             <button type="submit">let them know</button>
           </form>
@@ -173,6 +175,18 @@ const CopyLink = styled.div`
     flex-grow: 1;
     margin-right: 16px;
     font-size: 22px;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+
+    input {
+      margin-right: 0;
+    }
+
+    button {
+      margin-top: 16px;
+    }
   }
 `;
 

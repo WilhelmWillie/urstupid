@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <Background>
       <Container>
-        <LogoImg src={Logo} alt="urstup.id logo" />
+        <a href="/"><LogoImg src={Logo} alt="urstup.id logo" /></a>
 
         <p>a friendly way to remind ur friends what they are</p>
       </Container>
