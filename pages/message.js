@@ -5,8 +5,8 @@ import Router, {useRouter} from 'next/router';
 import { Footer, MessageHero, MessageBody, CallToAction } from "../components";
 
 function Message() {
-  console.log(useRouter());
-  const {query: { slug }} = useRouter();
+  const { asPath } = useRouter();
+  const slug = asPath.slice(1,asPath.length);
 
   const [message, setMessage] = useState({
     fromName: null,
