@@ -89,9 +89,9 @@ const Form = () => {
 
             <Space />
 
-            <h2>why are they stupid</h2>
+            <h2>they are stupid because...</h2>
             <span>280 characters max</span>
-            <textarea name="message" rows={3} placeholder="because they just are" maxLength="280" required />
+            <textarea name="message" rows={3} placeholder="they just are" maxLength="280" required />
 
             <button type="submit">let them know</button>
           </form>
