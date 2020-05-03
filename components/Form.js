@@ -49,7 +49,7 @@ const Form = () => {
     if (res.status === 200) {
       const location = window.location;
       const messageData = data.message;
-      const url = `${location.protocol}//${location.host}/message?slug=${messageData.urlSlug}`
+      const url = `${location.protocol}//${location.host}/${messageData.urlSlug}`
 
       setLink(url);
       setShowModal(true);
