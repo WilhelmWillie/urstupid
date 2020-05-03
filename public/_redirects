@@ -1,1 +1,2 @@
 /*  /message?slug=:splat  200
+/message slug=:slug  /:slug  301
